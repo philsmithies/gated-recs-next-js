@@ -19,12 +19,12 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
     <Container>
       <div className={s.nav}>
         <div className="flex items-center flex-1">
-          <Link href="/">
+          {/* <Link href="/">
             <a className={s.logo} aria-label="Logo">
               <Logo />
             </a>
-          </Link>
-          <nav className={s.navMenu}>
+          </Link> */}
+          {/* <nav className={s.navMenu}>
             <Link href="/search">
               <a className={s.link}>All</a>
             </Link>
@@ -33,7 +33,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
                 <a className={s.link}>{l.label}</a>
               </Link>
             ))}
-          </nav>
+          </nav> */}
         </div>
         {/* {process.env.COMMERCE_SEARCH_ENABLED && (
           <div className="justify-center flex-1 hidden lg:flex">
@@ -41,7 +41,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </div>
         )} */}
         <Link href="/" passHref>
-          <p className="bg-yellow-400 pt-1 font-['Special_Elite'] text-6xl uppercase tracking-widest">
+          <p className="bg-yellow-400 pt-1 font-['Special_Elite'] text-6xl uppercase tracking-widest hover:bg-yellow-600 hover:cursor-pointer">
             GTD
           </p>
         </Link>

@@ -35,23 +35,25 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className=" font-typewriter">
               <h2 className="mb-4 text-lg font-medium uppercase">FOLLOW</h2>
               <Link href="https://gatedrecordings.bandcamp.com/" passHref>
-                <Image
-                  src={'/bandcamplogo.svg'}
-                  alt="Band Camp"
-                  className="mr-2 hover:cursor-pointer"
-                  width={50}
-                  height={50}
-                />
+                <svg
+                  className="fill-white hover:fill-yellow-300 hover:cursor-pointer transition-colors"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 50 50"
+                  width="50px"
+                  height="50px"
+                >
+                  <path d="M25,2C12.318,2,2,12.317,2,25s10.318,23,23,23s23-10.317,23-23S37.682,2,25,2z M29.36,32H13l7.64-14H37L29.36,32z" />
+                </svg>
               </Link>
             </div>
             <div>
               <form className="flex flex-col">
                 <input
-                  type="text"
+                  type="email"
                   placeholder="ENTER YOUR EMAIL"
-                  className="w-2/3 border-2 py-4 px-2"
+                  className="w-2/3 border-2 py-4 px-2 hover:border-yellow-400 focus:outline-none focus:border-yellow-400"
                 />
-                <button className="mt-6 ml-2 self-start text-sm">
+                <button className="mt-6 ml-2 md:ml-0 self-start text-sm hover:text-yellow-400 border-2 border-white hover:border-yellow-400 py-2 px-4">
                   SUBSCRIBE
                 </button>
               </form>
@@ -59,10 +61,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div>
               <h2 className="mb-4 text-lg font-medium uppercase">Contact</h2>
               <ul className="mt-8 space-y-4">
-                <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
+                <li className="flex items-center text-sm font-medium text-white hover:text-yellow-400">
                   <a href="emailto:phil@phil.com">GET IN TOUCH</a>
                 </li>
-                <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
+                <li className="flex items-center text-sm font-medium text-white hover:text-yellow-400">
                   <a href="https://gatedrecordings.bandcamp.com/">BANDCAMP</a>
                 </li>
               </ul>

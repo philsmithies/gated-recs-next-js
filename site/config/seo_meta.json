@@ -1,10 +1,10 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "title": "Gated Records",
+  "titleTemplate": "%s - Gated Records Storefront",
+  "description": "Gated Records - https://www.gatedrecs.com",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "Gated Records",
+    "description": "Gated Records - https://www.gatedrecs.com",
     "type": "website",
     "url": "https://nextjs.org/commerce",
     "site_name": "Next.js Commerce",
