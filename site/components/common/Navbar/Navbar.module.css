@@ -6,7 +6,7 @@
 }
 
 .nav {
-  @apply relative flex flex-row justify-between py-4 md:py-4;
+  @apply relative flex flex-row justify-between py-4 md:py-1;
 }
 
 .navMenu {

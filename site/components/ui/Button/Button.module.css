@@ -1,14 +1,14 @@
 .root {
-  @apply bg-accent-9 text-accent-0 cursor-pointer inline-flex
+  @apply bg-accent-0 text-accent-9 cursor-pointer inline-flex
   px-10 py-5 leading-6 transition ease-in-out duration-150
   shadow-sm text-center justify-center uppercase
   border border-transparent items-center text-sm font-semibold
-  tracking-wide;
+  tracking-wide font-typewriter;
   max-height: 64px;
 }
 
 .root:hover {
-  @apply border-accent-9 bg-accent-6;
+  @apply border-accent-9 bg-accent-0 border-yellow-400;
 }
 
 .root:focus {

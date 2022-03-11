@@ -1,5 +1,5 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
+  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden bg-white;
   min-height: auto;
 }
 
@@ -55,6 +55,7 @@
 
 .button {
   width: 100%;
+  max-width: 600px;
 }
 
 .wishlistButton {

@@ -29,14 +29,16 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
   return (
     <footer role="contentinfo">
-      <Container>
-        <div className="relative border-t border-b border-black border-opacity-5 font-typewriter">
+      <Container className="bg-white">
+        <div className="relative border-t border-b border-black border-opacity-5 font-typewriter ">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-4 py-14 md:grid-cols-3 md:px-8">
             <div className=" font-typewriter">
-              <h2 className="mb-4 text-lg font-medium uppercase">FOLLOW</h2>
+              <h2 className="mb-4 text-lg font-medium uppercase text-black">
+                FOLLOW
+              </h2>
               <Link href="https://gatedrecordings.bandcamp.com/" passHref>
                 <svg
-                  className="fill-white hover:fill-yellow-300 hover:cursor-pointer transition-colors"
+                  className="fill-black hover:fill-yellow-300 hover:cursor-pointer transition-colors"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 50 50"
                   width="50px"
@@ -51,28 +53,30 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <input
                   type="email"
                   placeholder="ENTER YOUR EMAIL"
-                  className="w-2/3 border-2 py-4 px-2 hover:border-yellow-400 focus:outline-none focus:border-yellow-400"
+                  className="w-full border-2 py-3 px-2 hover:border-yellow-400 focus:outline-none focus:border-yellow-400"
                 />
-                <button className="mt-6 ml-2 md:ml-0 self-start text-sm hover:text-yellow-400 border-2 border-white hover:border-yellow-400 py-2 px-4">
+                <button className="mt-6 ml-2 md:ml-0 self-start text-sm hover:text-yellow-400 border-2 border-black text-black hover:border-yellow-400 py-2 px-4">
                   SUBSCRIBE
                 </button>
               </form>
             </div>
             <div>
-              <h2 className="mb-4 text-lg font-medium uppercase">Contact</h2>
+              <h2 className="mb-4 text-lg font-medium uppercase text-black">
+                Contact
+              </h2>
               <ul className="mt-8 space-y-4">
-                <li className="flex items-center text-sm font-medium text-white hover:text-yellow-400">
+                <li className="flex items-center text-sm font-medium text-black hover:text-yellow-400">
                   <a href="emailto:phil@phil.com">GET IN TOUCH</a>
                 </li>
-                <li className="flex items-center text-sm font-medium text-white hover:text-yellow-400">
+                <li className="flex items-center text-sm font-medium text-black hover:text-yellow-400">
                   <a href="https://gatedrecordings.bandcamp.com/">BANDCAMP</a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className=" bg-black py-2 px-4 md:px-8">
-          <p className="font-typewriter text-white">
+        <div className="py-2 px-4 md:px-8">
+          <p className="font-typewriter text-black">
             © {new Date().getFullYear()} Gated Records
           </p>
         </div>

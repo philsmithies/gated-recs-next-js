@@ -39,7 +39,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <div className="p-5 h-full max-w-lg sm:max-w-xl lg:max-w-7xl mx-auto">
+      <div className="p-5 py-20 h-full max-w-m sm:max-w-lg lg:max-w-4xl mx-auto ">
         <Grid layout="normal">
           {products.map((product) => (
             <ProductCard
@@ -54,10 +54,10 @@ export default function Home({
           ))}
         </Grid>
       </div>
-      <Hero
+      {/* <Hero
         headline=" Gated Recs Is Where It Is At"
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
+      /> */}
     </>
   )
 }
