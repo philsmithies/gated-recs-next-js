@@ -7,7 +7,7 @@
 }
 
 .header .label {
-  @apply text-base font-medium;
+  @apply text-secondary font-medium;
 }
 
 .content {

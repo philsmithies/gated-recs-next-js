@@ -24,7 +24,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
 
   return (
     <>
-      <Container className="max-w-none w-full" clean>
+      <Container className="max-w-none w-full p-16 grainy" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
             <ProductTag

@@ -39,20 +39,22 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <div className="p-5 py-20 h-full max-w-m sm:max-w-lg lg:max-w-4xl mx-auto ">
-        <Grid layout="normal">
-          {products.map((product) => (
-            <ProductCard
-              key={product.path}
-              product={product}
-              variant="simple"
-              imgProps={{
-                width: 480,
-                height: 480,
-              }}
-            />
-          ))}
-        </Grid>
+      <div className="p-5 py-20 h-full w-full grainy">
+        <div className=" max-w-m sm:max-w-lg lg:max-w-4xl mx-auto">
+          <Grid layout="normal">
+            {products.map((product) => (
+              <ProductCard
+                key={product.path}
+                product={product}
+                variant="simple"
+                imgProps={{
+                  width: 480,
+                  height: 480,
+                }}
+              />
+            ))}
+          </Grid>
+        </div>
       </div>
       {/* <Hero
         headline=" Gated Recs Is Where It Is At"

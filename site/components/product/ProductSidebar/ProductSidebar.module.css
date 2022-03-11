@@ -1,5 +1,5 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden bg-white;
+  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
   min-height: auto;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .header .name span {
-  @apply py-4 px-6 bg-primary text-primary font-bold;
+  @apply py-4 px-6 bg-primary text-secondary font-bold;
   font-size: inherit;
   letter-spacing: inherit;
   box-decoration-break: clone;

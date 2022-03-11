@@ -67,7 +67,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
           </Button>
         )}
       </div>
-      <div className="mt-6">
+      <div className="mt-6 text-black">
         <Collapse title="Details">
           This is a limited edition production run.
         </Collapse>
