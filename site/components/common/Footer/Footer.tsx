@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
@@ -27,64 +28,51 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
 
   return (
-    <footer className={rootClassName}>
+    <footer role="contentinfo">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
-          <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
-              <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-accent-6 mr-2">
-                  <Logo />
-                </span>
-                <span>ACME</span>
-              </a>
-            </Link>
-          </div>
-          <div className="col-span-1 lg:col-span-8">
-            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
-              {[...links, ...sitePages].map((page) => (
-                <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                  <Link href={page.url!}>
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </span>
-              ))}
+        <div className="relative border-t border-b border-black border-opacity-5 font-typewriter">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-4 py-14 md:grid-cols-3 md:px-8">
+            <div className=" font-typewriter">
+              <h2 className="mb-4 text-lg font-medium uppercase">FOLLOW</h2>
+              <Link href="https://gatedrecordings.bandcamp.com/" passHref>
+                <Image
+                  src={'/bandcamplogo.svg'}
+                  alt="Band Camp"
+                  className="mr-2 hover:cursor-pointer"
+                  width={50}
+                  height={50}
+                />
+              </Link>
             </div>
-          </div>
-          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
-            <div className="flex space-x-6 items-center h-10">
-              <a
-                className={s.link}
-                aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
-              >
-                <Github />
-              </a>
-              <I18nWidget />
+            <div>
+              <form className="flex flex-col">
+                <input
+                  type="text"
+                  placeholder="ENTER YOUR EMAIL"
+                  className="w-2/3 border-2 py-4 px-2"
+                />
+                <button className="mt-6 ml-2 self-start text-sm">
+                  SUBSCRIBE
+                </button>
+              </form>
+            </div>
+            <div>
+              <h2 className="mb-4 text-lg font-medium uppercase">Contact</h2>
+              <ul className="mt-8 space-y-4">
+                <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
+                  <a href="emailto:phil@phil.com">GET IN TOUCH</a>
+                </li>
+                <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
+                  <a href="https://gatedrecordings.bandcamp.com/">BANDCAMP</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
-          <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
-          </div>
-          <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">Created by</span>
-            <a
-              rel="noopener noreferrer"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className="text-primary"
-            >
-              <Vercel
-                className="inline-block h-6 ml-3 text-primary"
-                alt="Vercel.com Logo"
-              />
-            </a>
-          </div>
+        <div className=" bg-black py-2 px-4 md:px-8">
+          <p className="font-typewriter text-white">
+            © {new Date().getFullYear()} Gated Records
+          </p>
         </div>
       </Container>
     </footer>

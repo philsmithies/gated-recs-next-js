@@ -37,6 +37,9 @@ module.exports = {
         green: 'var(--green)',
         red: 'var(--red)',
       },
+      fontFamily: {
+        typewriter: ['Special_Elite', 'courier'],
+      },
       textColor: {
         base: 'var(--text-base)',
         primary: 'var(--text-primary)',

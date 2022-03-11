@@ -35,20 +35,25 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             ))}
           </nav>
         </div>
-        {process.env.COMMERCE_SEARCH_ENABLED && (
+        {/* {process.env.COMMERCE_SEARCH_ENABLED && (
           <div className="justify-center flex-1 hidden lg:flex">
             <Searchbar />
           </div>
-        )}
+        )} */}
+        <Link href="/" passHref>
+          <p className="bg-yellow-400 pt-1 font-['Special_Elite'] text-6xl uppercase tracking-widest">
+            GTD
+          </p>
+        </Link>
         <div className="flex items-center justify-end flex-1 space-x-8">
           <UserNav />
         </div>
       </div>
-      {process.env.COMMERCE_SEARCH_ENABLED && (
+      {/* {process.env.COMMERCE_SEARCH_ENABLED && (
         <div className="flex pb-4 lg:px-6 lg:hidden">
           <Searchbar id="mobile-search" />
         </div>
-      )}
+      )} */}
     </Container>
   </NavbarRoot>
 )

@@ -1,5 +1,7 @@
 .root {
   @apply sticky top-0 bg-primary z-40 transition-all duration-150;
+  background-color: #1a1a1a;
+  background-image: url('https://f4.bcbits.com/img/0019897567_100.png');
   min-height: 74px;
 }
 
