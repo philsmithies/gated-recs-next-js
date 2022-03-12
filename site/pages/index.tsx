@@ -42,7 +42,7 @@ export default function Home({
       <div className="p-5 py-20 h-full w-full grainy">
         <div className=" max-w-m sm:max-w-lg lg:max-w-4xl mx-auto">
           <Grid layout="normal">
-            {products.map((product) => (
+            {products.map((product: any) => (
               <ProductCard
                 key={product.path}
                 product={product}
