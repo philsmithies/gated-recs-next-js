@@ -1,12 +1,13 @@
 import { FC, useContext } from 'react'
 import Link from 'next/link'
+import type { LinkProps } from 'next/link'
 import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import { BtcContext } from '../../../context/BtcContext'
 interface NavbarProps {
-  links?: Link[]
+  links?: LinkProps[]
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => {

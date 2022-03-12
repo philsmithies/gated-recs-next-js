@@ -16,7 +16,7 @@
 }
 
 .swatch:hover {
-  @apply transform scale-105 bg-hover;
+  @apply transform bg-black text-white;
 }
 
 .swatch > span {
@@ -37,7 +37,7 @@
 }
 
 .active {
-  @apply border-yellow-500 border-2;
+  @apply border-yellow-500 border-2 bg-black text-white;
   padding-right: 1px;
   padding-left: 1px;
 }
