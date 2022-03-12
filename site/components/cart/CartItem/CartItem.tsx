@@ -1,4 +1,10 @@
-import { ChangeEvent, FocusEventHandler, useEffect, useState } from 'react'
+import {
+  ChangeEvent,
+  FocusEventHandler,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import cn from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,6 +15,7 @@ import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
+import { BtcContext } from 'context/BtcContext'
 
 type ItemOption = {
   name: string
@@ -34,12 +41,18 @@ const CartItem = ({
   const [quantity, setQuantity] = useState<number>(item.quantity)
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
+  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
+  const conversion = 1 / btcPrice
 
   const { price } = usePrice({
     amount: item.variant.price * item.quantity,
     baseAmount: item.variant.listPrice * item.quantity,
     currencyCode,
   })
+
+  const btcItemPrice = (
+    Number(price.substring(price.indexOf('£') + 1)) * conversion
+  ).toFixed(8)
 
   const handleChange = async ({
     target: { value },
@@ -93,7 +106,7 @@ const CartItem = ({
                 width={150}
                 height={150}
                 src={item.variant.image?.url || placeholderImg}
-                alt={item.variant.image?.altText || "Product Image"}
+                alt={item.variant.image?.altText || 'Product Image'}
                 unoptimized
               />
             </a>
@@ -140,7 +153,7 @@ const CartItem = ({
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{price}</span>
+          <span>{btcOn ? price : `฿${btcItemPrice}`}</span>
         </div>
       </div>
       {variant === 'default' && (
