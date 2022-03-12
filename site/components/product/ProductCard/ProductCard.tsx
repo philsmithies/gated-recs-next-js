@@ -26,8 +26,7 @@ const ProductCard: FC<Props> = ({
   noNameTag = false,
   variant = 'default',
 }) => {
-  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
-  const conversion = 1 / btcPrice
+  const btcContext = useContext(BtcContext)
 
   const { price } = usePrice({
     amount: product.price.value,
@@ -84,9 +83,11 @@ const ProductCard: FC<Props> = ({
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {!btcOn
+                  {!btcContext?.btcOn
                     ? `${price} ${product.price?.currencyCode}`
-                    : `฿${(product.price.value * conversion).toFixed(8)}`}
+                    : `฿${btcContext
+                        ?.conversion(product.price.value)
+                        .toFixed(8)}`}
                 </div>
               </div>
             )}
@@ -124,9 +125,11 @@ const ProductCard: FC<Props> = ({
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {!btcOn
+                  {!btcContext?.btcOn
                     ? `${price} ${product.price?.currencyCode}`
-                    : `฿${(product.price.value * conversion).toFixed(8)}`}
+                    : `฿${btcContext
+                        ?.conversion(product.price.value)
+                        .toFixed(8)}`}
                 </div>
               </div>
             )}
@@ -162,9 +165,9 @@ const ProductCard: FC<Props> = ({
             <ProductTag
               name={product.name}
               price={
-                btcOn
+                btcContext?.btcOn
                   ? `${price} ${product.price?.currencyCode}`
-                  : `฿${(product.price.value * conversion).toFixed(8)}`
+                  : `฿${btcContext?.conversion(product.price.value).toFixed(8)}`
               }
             />
             <div className={s.imageContainer}>

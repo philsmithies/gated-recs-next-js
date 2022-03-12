@@ -117,7 +117,7 @@ const CartSidebarView: FC = () => {
               <span>Total</span>
               <span>
                 {btcContext?.btcOn ? (
-                  <span className="text-yellow-500">{total}</span>
+                  <span>{total}</span>
                 ) : (
                   <div>
                     <span className="text-yellow-500">฿</span>
