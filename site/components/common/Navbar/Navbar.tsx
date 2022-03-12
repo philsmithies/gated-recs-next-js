@@ -10,10 +10,10 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => {
-  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
+  const btcContext = useContext(BtcContext)
 
   const handleClick = () => {
-    toggleBtcOn()
+    btcContext?.toggleBtcOn()
   }
 
   return (
@@ -24,7 +24,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <div className="bg-black flex p-1 items-center font-typewriter">
               <p className="text-white mr-1">GBP</p>
               <label className={s.switch}>
-                <input type="checkbox" checked={btcOn} onClick={handleClick} />
+                <input
+                  type="checkbox"
+                  checked={btcContext?.btcOn}
+                  onClick={handleClick}
+                />
                 <span className={s.slider}></span>
               </label>
               <p className="text-white ml-1">BTC</p>

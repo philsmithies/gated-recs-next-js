@@ -23,8 +23,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     currencyCode: product.price.currencyCode!,
   })
 
-  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
-  const conversion = 1 / btcPrice
+  const btcContext = useContext(BtcContext)
 
   return (
     <>
@@ -33,14 +32,14 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <div className={cn(s.main, 'fit')}>
             <ProductTag
               name={product.name}
+              fontSize={32}
               price={
-                btcOn
+                !btcContext?.btcOn
                   ? `${price} ${product.price?.currencyCode}`
-                  : `฿${(product.price.value * conversion).toFixed(8)}`
+                  : `฿${btcContext.conversion(product.price.value).toFixed(8)}`
               }
             />
-              fontSize={32}
-            />
+
             <div className={s.sliderContainer}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (

@@ -41,8 +41,7 @@ const CartItem = ({
   const [quantity, setQuantity] = useState<number>(item.quantity)
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
-  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
-  const conversion = 1 / btcPrice
+  const btcContext = useContext(BtcContext)
 
   const { price } = usePrice({
     amount: item.variant.price * item.quantity,
@@ -50,9 +49,9 @@ const CartItem = ({
     currencyCode,
   })
 
-  const btcItemPrice = (
-    Number(price.substring(price.indexOf('£') + 1)) * conversion
-  ).toFixed(8)
+  const btcItemPrice = btcContext
+    ?.conversion(Number(price.substring(price.indexOf('£') + 1)))
+    .toFixed(8)
 
   const handleChange = async ({
     target: { value },
@@ -153,7 +152,7 @@ const CartItem = ({
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{btcOn ? price : `฿${btcItemPrice}`}</span>
+          <span>{btcContext?.btcOn ? price : `฿${btcItemPrice}`}</span>
         </div>
       </div>
       {variant === 'default' && (

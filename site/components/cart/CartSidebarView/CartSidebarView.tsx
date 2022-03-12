@@ -14,8 +14,7 @@ import { BtcContext } from 'context/BtcContext'
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
   const { data, isLoading, isEmpty } = useCart()
-  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
-  const conversion = 1 / btcPrice
+  const btcContext = useContext(BtcContext)
 
   // const { price: subTotal } = usePrice(
   //   data && {
@@ -31,9 +30,9 @@ const CartSidebarView: FC = () => {
     }
   )
 
-  const btcTotal = (
-    Number(total.substring(total.indexOf('£') + 1)) * conversion
-  ).toFixed(8)
+  const btcTotal = btcContext
+    ?.conversion(Number(total.substring(total.indexOf('£') + 1)))
+    .toFixed(8)
 
   const handleClose = () => closeSidebar()
   const goToCheckout = () => setSidebarView('CHECKOUT_VIEW')
@@ -120,7 +119,7 @@ const CartSidebarView: FC = () => {
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
               <span>Total</span>
               <span>
-                {btcOn ? (
+                {btcContext?.btcOn ? (
                   <span className="text-yellow-500">{total}</span>
                 ) : (
                   <div>
@@ -142,7 +141,7 @@ const CartSidebarView: FC = () => {
               )}
             </div>
             <li className="flex py-2 justify-center">
-              {!btcOn ? (
+              {!btcContext?.btcOn ? (
                 <span className="font-semibold tracking-wide text-center text-xs">
                   The Price in <span className="text-yellow-500">฿</span> Will
                   Be Shown At The Payment Page
