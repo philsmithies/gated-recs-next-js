@@ -13,7 +13,7 @@ interface Props {
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
+  variant?: 'default' | 'slim' | 'simple' | 'related'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -33,7 +33,11 @@ const ProductCard: FC<Props> = ({
 
   const rootClassName = cn(
     s.root,
-    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    {
+      [s.slim]: variant === 'slim',
+      [s.simple]: variant === 'simple',
+      [s.related]: variant === 'related',
+    },
     className
   )
 
@@ -93,6 +97,45 @@ const ProductCard: FC<Props> = ({
                     layout="responsive"
                     {...imgProps}
                   />
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {variant === 'related' && (
+          <>
+            {process.env.COMMERCE_WISHLIST_ENABLED && (
+              <WishlistButton
+                className={s.wishlistButton}
+                productId={product.id}
+                variant={product.variants[0]}
+              />
+            )}
+            {!noNameTag && (
+              <div className={s.header}>
+                <h3 className={s.name}>
+                  <span>{product.name}</span>
+                </h3>
+                <div className={s.price}>
+                  {`${price} ${product.price?.currencyCode}`}
+                </div>
+              </div>
+            )}
+            <div className={s.imageContainer}>
+              {product?.images && (
+                <div className="p-2">
+                  <Image
+                    alt={product.name || 'Product Image'}
+                    className={s.productImage}
+                    src={product.images[0]?.url || placeholderImg}
+                    height={540}
+                    width={540}
+                    quality="85"
+                    layout="responsive"
+                    {...imgProps}
+                  />
+                  <p className="text-center pt-1">{product.name}</p>
                 </div>
               )}
             </div>

@@ -70,7 +70,7 @@ const UserNav: FC<Props> = ({ className }) => {
             )}
           </li>
         )} */}
-        <li className={s.mobileMenu}>
+        {/* <li className={s.mobileMenu}>
           <Button
             className={s.item}
             variant="naked"
@@ -82,7 +82,7 @@ const UserNav: FC<Props> = ({ className }) => {
           >
             <Menu />
           </Button>
-        </li>
+        </li> */}
       </ul>
     </nav>
   )
