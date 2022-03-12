@@ -21,13 +21,14 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       <Container>
         <div className={s.nav}>
           <div className="flex items-center flex-1">
-            <button
-              className="border-2 border-yellow-400 bg-black"
-              onClick={handleClick}
-            >
-              {!btcOn ? <p> Toggle Btc On </p> : <p> Toggle Btc Off </p>}
-            </button>
-
+            <div className="bg-black flex p-1 items-center font-typewriter">
+              <p className="text-white mr-1">GBP</p>
+              <label className={s.switch}>
+                <input type="checkbox" checked={btcOn} onClick={handleClick} />
+                <span className={s.slider}></span>
+              </label>
+              <p className="text-white ml-1">BTC</p>
+            </div>
             {/* <Link href="/">
             <a className={s.logo} aria-label="Logo">
               <Logo />
@@ -50,7 +51,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           </div>
         )} */}
           <Link href="/" passHref>
-            <p className="bg-yellow-400 pt-1 font-['Special_Elite'] text-6xl uppercase tracking-widest hover:bg-yellow-600 hover:cursor-pointer">
+            <p className="bg-yellow-400 pt-1 font-['Special_Elite'] text-6xl uppercase tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
               GTD
             </p>
           </Link>

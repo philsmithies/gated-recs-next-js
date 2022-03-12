@@ -84,8 +84,12 @@ const CartSidebarView: FC = () => {
           <div className="px-4 sm:px-6 flex-1">
             <Link href="/cart">
               <a>
-                <Text variant="sectionHeading" onClick={handleClose}>
-                  My Cart
+                <Text
+                  variant="sectionHeading"
+                  onClick={handleClose}
+                  className="font-typewriter uppercase"
+                >
+                  Cart
                 </Text>
               </a>
             </Link>
@@ -115,7 +119,16 @@ const CartSidebarView: FC = () => {
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
               <span>Total</span>
-              <span>{btcOn ? total : `฿${btcTotal}`}</span>
+              <span>
+                {btcOn ? (
+                  <span className="text-yellow-500">{total}</span>
+                ) : (
+                  <div>
+                    <span className="text-yellow-500">฿</span>
+                    <span> {btcTotal}</span>
+                  </div>
+                )}
+              </span>
             </div>
             <div>
               {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
@@ -128,6 +141,16 @@ const CartSidebarView: FC = () => {
                 </Button>
               )}
             </div>
+            <li className="flex py-2 justify-center">
+              {!btcOn ? (
+                <span className="font-semibold tracking-wide text-center text-xs">
+                  The Price in <span className="text-yellow-500">฿</span> Will
+                  Be Shown At The Payment Page
+                </span>
+              ) : (
+                ''
+              )}
+            </li>
           </div>
         </>
       )}

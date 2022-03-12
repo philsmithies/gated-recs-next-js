@@ -118,6 +118,11 @@ const Layout: FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
+        <div className="invisible sm:visible rotate-90 -translate-x-14 mr-32 bg-black z-50 fixed w-42 text-center py-2 px-5 top-1/2 translate-y-1/2 left-0 float-left">
+          <p className="text-white uppercase font-typewriter text-base">
+            We Accept <span className="text-yellow-500">฿</span>
+          </p>
+        </div>
         <main className="fit ">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />

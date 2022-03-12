@@ -53,9 +53,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <input
                   type="email"
                   placeholder="ENTER YOUR EMAIL"
-                  className="w-full border-2 py-3 px-2 hover:border-yellow-400 focus:outline-none focus:border-yellow-400"
+                  className="w-full border-2 py-3 bg-black px-2 hover:border-yellow-400 focus:outline-none focus:border-yellow-400"
                 />
-                <button className="mt-6 ml-2 md:ml-0 self-start text-sm hover:text-yellow-400 border-2 border-black text-black hover:border-yellow-400 py-2 px-4">
+                <button className="mt-6 ml-2 md:ml-0 self-start text-sm hover:text-yellow-400 hover:bg-black border-2 border-black text-black hover:border-yellow-400 py-2 px-4">
                   SUBSCRIBE
                 </button>
               </form>
