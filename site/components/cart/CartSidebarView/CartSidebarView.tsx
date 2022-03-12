@@ -116,7 +116,7 @@ const CartSidebarView: FC = () => {
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
               <span>Total</span>
               <span>
-                {btcContext?.btcOn ? (
+                {!btcContext?.btcOn ? (
                   <span>{total}</span>
                 ) : (
                   <div>
@@ -138,7 +138,7 @@ const CartSidebarView: FC = () => {
               )}
             </div>
             <li className="flex py-2 justify-center">
-              {!btcContext?.btcOn ? (
+              {btcContext?.btcOn ? (
                 <span className="font-semibold tracking-wide text-center text-xs">
                   The Price in <span className="text-yellow-500">฿</span> Will
                   Be Shown At The Payment Page

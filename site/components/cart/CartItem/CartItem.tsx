@@ -152,7 +152,7 @@ const CartItem = ({
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{btcContext?.btcOn ? price : `฿${btcItemPrice}`}</span>
+          <span>{!btcContext?.btcOn ? price : `฿${btcItemPrice}`}</span>
         </div>
       </div>
       {variant === 'default' && (
