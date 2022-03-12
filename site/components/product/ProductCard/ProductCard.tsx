@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
@@ -7,6 +7,7 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
+import { BtcContext } from 'context/BtcContext'
 
 interface Props {
   className?: string
@@ -25,6 +26,9 @@ const ProductCard: FC<Props> = ({
   noNameTag = false,
   variant = 'default',
 }) => {
+  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
+  const conversion = 1 / btcPrice
+
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -80,7 +84,9 @@ const ProductCard: FC<Props> = ({
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
+                  {!btcOn
+                    ? `${price} ${product.price?.currencyCode}`
+                    : `฿${(product.price.value * conversion).toFixed(8)}`}
                 </div>
               </div>
             )}
@@ -118,7 +124,9 @@ const ProductCard: FC<Props> = ({
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
+                  {!btcOn
+                    ? `${price} ${product.price?.currencyCode}`
+                    : `฿${(product.price.value * conversion).toFixed(8)}`}
                 </div>
               </div>
             )}
@@ -135,7 +143,7 @@ const ProductCard: FC<Props> = ({
                     layout="responsive"
                     {...imgProps}
                   />
-                  <p className="text-center pt-1">{product.name}</p>
+                  <p className={s.relatedText}>{product.name}</p>
                 </div>
               )}
             </div>
@@ -153,7 +161,11 @@ const ProductCard: FC<Props> = ({
             )}
             <ProductTag
               name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
+              price={
+                btcOn
+                  ? `${price} ${product.price?.currencyCode}`
+                  : `฿${(product.price.value * conversion).toFixed(8)}`
+              }
             />
             <div className={s.imageContainer}>
               {product?.images && (

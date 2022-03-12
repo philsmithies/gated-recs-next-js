@@ -1,7 +1,7 @@
 import cn from 'clsx'
 import Image from 'next/image'
 import s from './ProductView.module.css'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
@@ -10,6 +10,7 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import { BtcContext } from 'context/BtcContext'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -22,6 +23,9 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     currencyCode: product.price.currencyCode!,
   })
 
+  const { btcOn, toggleBtcOn, btcPrice } = useContext(BtcContext)
+  const conversion = 1 / btcPrice
+
   return (
     <>
       <Container className="max-w-none w-full p-16 grainy" clean>
@@ -29,7 +33,12 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <div className={cn(s.main, 'fit')}>
             <ProductTag
               name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
+              price={
+                btcOn
+                  ? `${price} ${product.price?.currencyCode}`
+                  : `฿${(product.price.value * conversion).toFixed(8)}`
+              }
+            />
               fontSize={32}
             />
             <div className={s.sliderContainer}>

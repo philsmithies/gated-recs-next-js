@@ -81,7 +81,7 @@
 }
 
 .imageContainer .productImage {
-  @apply transform transition-transform duration-500 object-cover hover:scale-105;
+  @apply transform transition-all duration-500 object-cover hover:scale-105 hover:text-yellow-500;
 }
 
 .root .wishlistButton {
@@ -114,4 +114,8 @@
 
 .root:global(.secondary) .header span {
   @apply bg-accent-0 text-accent-9;
+}
+
+.relatedText {
+  @apply p-1 text-center hover:text-yellow-400;
 }
