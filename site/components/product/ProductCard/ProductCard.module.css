@@ -90,7 +90,7 @@
 
 /* Variant Simple */
 .simple .header .name {
-  @apply pt-2 text-lg leading-10 -mt-1;
+  @apply pt-2 text-sm leading-10 -mt-1;
 }
 
 .simple .header .price {
