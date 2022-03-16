@@ -82,13 +82,13 @@ const ProductCard: FC<Props> = ({
                 <h3 className={s.name}>
                   <span>{product.name}</span>
                 </h3>
-                <div className={s.price}>
+                {/* <div className={s.price}>
                   {!btcContext?.btcOn
                     ? `${price} ${product.price?.currencyCode}`
                     : `฿${btcContext
                         ?.conversion(product.price.value)
                         .toFixed(8)}`}
-                </div>
+                </div> */}
               </div>
             )}
             <div className={s.imageContainer}>

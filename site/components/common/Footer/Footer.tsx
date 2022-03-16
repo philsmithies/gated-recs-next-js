@@ -77,7 +77,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="py-2 px-4 md:px-8">
           <p className="font-typewriter text-black">
-            © {new Date().getFullYear()} Gated Records
+            © {new Date().getFullYear()} Gated Recordings
           </p>
         </div>
       </Container>

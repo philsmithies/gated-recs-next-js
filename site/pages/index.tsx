@@ -56,10 +56,6 @@ export default function Home({
           </Grid>
         </div>
       </div>
-      {/* <Hero
-        headline=" Gated Recs Is Where It Is At"
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      /> */}
     </>
   )
 }
