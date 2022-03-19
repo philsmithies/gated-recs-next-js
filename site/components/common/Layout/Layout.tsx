@@ -129,7 +129,7 @@ const Layout: FC<Props> = ({
         <CheckoutProvider>
           <SidebarUI links={navBarlinks} />
         </CheckoutProvider>
-        <FeatureBar
+        {/* <FeatureBar
           title="This site uses cookies to handle the checkout. By clicking, you agree to our Privacy Policy."
           hide={acceptedCookies}
           action={
@@ -137,7 +137,7 @@ const Layout: FC<Props> = ({
               Accept cookies
             </Button>
           }
-        />
+        /> */}
       </div>
     </CommerceProvider>
   )
