@@ -11,14 +11,30 @@ import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
 import { BtcContext } from 'context/BtcContext'
+import { useAddItem } from '@framework/cart'
+import { useEffect, useState } from 'react'
+import { ProductOptions } from '@components/product'
+import { Button, Rating, Collapse, useUI } from '@components/ui'
+import {
+  getProductVariant,
+  selectDefaultOptionFromProduct,
+  SelectedOptions,
+} from '../helpers'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
 }
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
+
+  useEffect(() => {
+    selectDefaultOptionFromProduct(product, setSelectedOptions)
+  }, [product])
+  const variant = getProductVariant(product, selectedOptions)
+
   const { price } = usePrice({
-    amount: product.price.value,
+    amount: variant ? variant.price : product.price.value,
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })

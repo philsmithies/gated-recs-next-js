@@ -162,13 +162,17 @@ const ProductCard: FC<Props> = ({
                 variant={product.variants[0] as any}
               />
             )}
-            <ProductTag
+            {/* <ProductTag
               name={product.name}
               price={
                 btcContext?.btcOn
                   ? `${price} ${product.price?.currencyCode}`
                   : `฿${btcContext?.conversion(product.price.value).toFixed(8)}`
               }
+            /> */}
+            <ProductTag
+              name={product.name}
+              price={`${price} ${product.price?.currencyCode}`}
             />
             <div className={s.imageContainer}>
               {product?.images && (

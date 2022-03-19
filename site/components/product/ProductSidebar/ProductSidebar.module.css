@@ -3,6 +3,15 @@
   min-height: auto;
 }
 
+.price {
+  @apply bg-accent-2 text-accent-9 cursor-pointer inline-flex
+  px-10 py-5 leading-6 transition ease-in-out duration-150
+  shadow-sm text-center justify-center uppercase
+  border border-transparent items-center text-sm font-semibold
+  tracking-wide font-typewriter mb-4;
+  max-height: 64px;
+}
+
 .main {
   @apply relative px-0 pb-0 box-border  flex flex-col col-span-1;
   min-height: 500px;

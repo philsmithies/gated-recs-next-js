@@ -1,6 +1,6 @@
 import s from './ProductSidebar.module.css'
 import { useAddItem } from '@framework/cart'
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
 import type { Product } from '@commerce/types/product'
 import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
@@ -9,6 +9,8 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
+import usePrice from '@framework/product/use-price'
+import { BtcContext } from 'context/BtcContext'
 
 interface ProductSidebarProps {
   product: Product
@@ -20,12 +22,20 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
+  const btcContext = useContext(BtcContext)
 
   useEffect(() => {
     selectDefaultOptionFromProduct(product, setSelectedOptions)
   }, [product])
 
   const variant = getProductVariant(product, selectedOptions)
+
+  const { price } = usePrice({
+    amount: variant ? variant.price : product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
+  })
+
   const addToCart = async () => {
     setLoading(true)
     try {
@@ -47,6 +57,16 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
+      <h2 className="uppercase font-medium text-sm tracking-wide mb-4">
+        Price
+      </h2>
+      <p className={s.price}>
+        {!btcContext?.btcOn
+          ? `${price} ${product.price?.currencyCode}`
+          : `฿${btcContext
+              .conversion(variant ? variant.price : product.price.value)
+              .toFixed(8)}`}
+      </p>
       <Text
         className="pb-4 break-words w-full max-w-xl"
         html={product.descriptionHtml || product.description}
