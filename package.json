@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build --scope=next-commerce --include-dependencies --no-deps",
+    "build": "turbo run build --scope=next-commerce --include-dependencies --no-deps && next export",
     "dev": "turbo run dev",
     "start": "turbo run start",
     "types": "turbo run types",
