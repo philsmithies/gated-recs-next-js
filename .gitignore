@@ -18,7 +18,6 @@ dist
 
 # misc
 .DS_Store
-.DSStore
 *.pem
 .idea
 
