@@ -1,6 +1,6 @@
 ## Gated Records - Record Label E-Commerce
 
-![Home](./site/public/gtdhome.png)
+![HomePreview](./site/public/gated-preview-full.png)
 
 ## Features
 
