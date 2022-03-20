@@ -56,8 +56,8 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           </div>
         )} */}
           <Link href="/" passHref>
-            <p className="bg-black pt-1 font-['Special_Elite'] text-3xl tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
-              gated recordings.
+            <p className="bg-black pt-1 font-typewriter uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
+              gated
             </p>
           </Link>
           <div className="flex items-center justify-end flex-1 space-x-8">

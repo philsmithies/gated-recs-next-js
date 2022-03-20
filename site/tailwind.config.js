@@ -38,7 +38,7 @@ module.exports = {
         red: 'var(--red)',
       },
       fontFamily: {
-        typewriter: ['Special_Elite', 'courier'],
+        typewriter: ['IBM Plex Mono', 'monospace'],
       },
       textColor: {
         base: 'var(--text-base)',
