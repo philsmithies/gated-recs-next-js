@@ -57,7 +57,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      <h2 className="uppercase font-medium text-sm tracking-wide mb-4">
+      <h2 className="uppercase font-medium text-sm tracking-wide mb-4 text-black">
         Price
       </h2>
       <p className={s.price}>
