@@ -20,6 +20,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
+import Link from 'next/link'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -44,6 +45,11 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   return (
     <>
       <Container className="max-w-none w-full p-16 grainy" clean>
+        <Link href="/" passHref>
+          <p className="bg-black text-center mb-4 border border-white hover:bg-yellow-400 hover:text-black transition-colors text-white w-28 py-2 px-2 uppercase font-typewriter cursor-pointer">
+            GO BACK
+          </p>
+        </Link>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
             <ProductTag

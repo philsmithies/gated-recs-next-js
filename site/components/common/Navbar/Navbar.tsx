@@ -22,18 +22,17 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       <Container>
         <div className={s.nav}>
           <div className="flex items-center flex-1">
-            <div className="bg-black flex p-1 items-center font-typewriter">
-              <p className="text-white mr-1">GBP</p>
-              <label className={s.switch}>
-                <input
-                  type="checkbox"
-                  checked={btcContext?.btcOn}
-                  onClick={handleClick}
-                />
-                <span className={s.slider}></span>
-              </label>
-              <p className="text-white ml-1">BTC</p>
-            </div>
+            <Link href="/" passHref>
+              <img
+                src="/logo.png"
+                alt="logo banner"
+                className="h-24 ml-10 hover:bg-yellow-500 transition-colors hover:cursor-pointer"
+              />
+              {/* <p className="bg-black pt-1 font-typewriterHeading uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
+              gated
+            </p> */}
+            </Link>
+
             {/* <Link href="/">
             <a className={s.logo} aria-label="Logo">
               <Logo />
@@ -55,17 +54,20 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <Searchbar />
           </div>
         )} */}
-          <Link href="/" passHref>
-            <img
-              src="/logo.png"
-              alt="logo banner"
-              className="h-24 hover:bg-yellow-500 transition-colors hover:cursor-pointer"
-            />
-            {/* <p className="bg-black pt-1 font-typewriterHeading uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
-              gated
-            </p> */}
-          </Link>
+
           <div className="flex items-center justify-end flex-1 space-x-8">
+            <div className="bg-black flex p-1 items-center font-typewriter">
+              <p className="text-white mr-1">GBP</p>
+              <label className={s.switch}>
+                <input
+                  type="checkbox"
+                  checked={btcContext?.btcOn}
+                  onClick={handleClick}
+                />
+                <span className={s.slider}></span>
+              </label>
+              <p className="text-white ml-1">BTC</p>
+            </div>
             <UserNav />
           </div>
         </div>

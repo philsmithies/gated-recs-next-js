@@ -94,7 +94,7 @@
 }
 
 .simple .header .price {
-  @apply text-sm;
+  @apply text-xs;
 }
 
 /* Variant Slim */
