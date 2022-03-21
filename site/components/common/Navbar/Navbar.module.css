@@ -1,11 +1,11 @@
 .root {
-  @apply sticky top-0 bg-primary z-40 transition-all duration-150 h-20;
-  background-color: #1a1a1a;
-  background-image: url('/barcode_faded.png');
+  @apply sticky top-0 bg-primary z-40 transition-all duration-150 h-28;
+  background-color: #000;
+  /* background-image: url('/barcode_faded.png'); */
 }
 
 .nav {
-  @apply relative flex flex-row justify-between items-center py-4 md:py-1 h-20;
+  @apply relative flex flex-row justify-between items-center py-4 md:py-1 h-28;
 }
 
 .navMenu {

@@ -39,6 +39,7 @@ module.exports = {
       },
       fontFamily: {
         typewriter: ['IBM Plex Mono', 'monospace'],
+        typewriterHeading: ['Special Elite', 'monospace'],
       },
       textColor: {
         base: 'var(--text-base)',

@@ -56,9 +56,14 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           </div>
         )} */}
           <Link href="/" passHref>
-            <p className="bg-black pt-1 font-typewriter uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
+            <img
+              src="/logo.png"
+              alt="logo banner"
+              className="h-24 hover:bg-yellow-500 transition-colors hover:cursor-pointer"
+            />
+            {/* <p className="bg-black pt-1 font-typewriterHeading uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
               gated
-            </p>
+            </p> */}
           </Link>
           <div className="flex items-center justify-end flex-1 space-x-8">
             <UserNav />
