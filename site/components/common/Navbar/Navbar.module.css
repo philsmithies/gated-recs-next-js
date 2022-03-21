@@ -5,7 +5,7 @@
 }
 
 .nav {
-  @apply relative flex flex-row justify-between items-center py-4 md:py-1 h-28;
+  @apply mx-auto relative flex flex-row justify-between items-center py-4 md:py-1 h-28 max-w-4xl;
 }
 
 .navMenu {

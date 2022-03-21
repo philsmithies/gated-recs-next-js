@@ -26,7 +26,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               <img
                 src="/logo.png"
                 alt="logo banner"
-                className="h-24 ml-10 hover:bg-yellow-500 transition-colors hover:cursor-pointer"
+                className="h-24 hover:bg-yellow-500 transition-colors hover:cursor-pointer"
               />
               {/* <p className="bg-black pt-1 font-typewriterHeading uppercase text-3xl font-bold tracking-widest hover:bg-black hover:text-yellow-500 hover:cursor-pointer">
               gated
