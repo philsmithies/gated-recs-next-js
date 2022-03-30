@@ -1,19 +1,18 @@
 import type {
-  GetStaticPathsContext,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
 } from 'next'
 import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
 
-export async function getStaticProps({
+export async function getServerSideProps({
   params,
   locale,
   locales,
   preview,
-}: GetStaticPropsContext<{ slug: string }>) {
+}: GetServerSidePropsContext<{ slug: string }>) {
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
@@ -44,31 +43,13 @@ export async function getStaticProps({
       relatedProducts,
       categories,
     },
-    revalidate: 200,
-  }
-}
-
-export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const { products } = await commerce.getAllProductPaths()
-
-  return {
-    paths: locales
-      ? locales.reduce<string[]>((arr, locale) => {
-          // Add a product path for every locale
-          products.forEach((product: any) => {
-            arr.push(`/${locale}/product${product.path}`)
-          })
-          return arr
-        }, [])
-      : products.map((product: any) => `/product${product.path}`),
-    fallback: 'blocking',
   }
 }
 
 export default function Slug({
   product,
   relatedProducts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
 
   return router.isFallback ? (

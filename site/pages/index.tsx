@@ -2,13 +2,15 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Hero } from '@components/ui'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
-export async function getStaticProps({
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from 'next'
+export async function getServerSideProps({
   preview,
   locale,
   locales,
-}: GetStaticPropsContext) {
+}: GetServerSidePropsContext) {
   const config = { locale, locales }
   const productsPromise = commerce.getAllProducts({
     variables: { first: 6 },
@@ -30,13 +32,12 @@ export async function getStaticProps({
       brands,
       pages,
     },
-    revalidate: 60,
   }
 }
 
 export default function Home({
   products,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <div className="p-5 py-20 h-full w-full grainy">

@@ -1,13 +1,13 @@
-import type { GetStaticPropsContext } from 'next'
+import type { GetServerSidePropsContext } from 'next'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { Text } from '@components/ui'
 
-export async function getStaticProps({
+export async function getServerSideProps({
   preview,
   locale,
   locales,
-}: GetStaticPropsContext) {
+}: GetServerSidePropsContext) {
   const config = { locale, locales }
   const { pages } = await commerce.getAllPages({ config, preview })
   const { categories, brands } = await commerce.getSiteInfo({ config, preview })
@@ -17,7 +17,6 @@ export async function getStaticProps({
       categories,
       brands,
     },
-    revalidate: 200,
   }
 }
 

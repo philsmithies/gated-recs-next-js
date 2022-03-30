@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext } from 'next'
+import type { GetServerSidePropsContext } from 'next'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import commerce from '@lib/api/commerce'
@@ -8,11 +8,11 @@ import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import { useUI } from '@components/ui/context'
 
-export async function getStaticProps({
+export async function getServerSideProps({
   preview,
   locale,
   locales,
-}: GetStaticPropsContext) {
+}: GetServerSidePropsContext) {
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
@@ -58,9 +58,6 @@ export default function Cart() {
             <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
               Your cart is empty
             </h2>
-            <p className="text-accent-6 px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-            </p>
           </div>
         ) : error ? (
           <div className="flex-1 px-4 flex flex-col justify-center items-center">
@@ -115,29 +112,20 @@ export default function Cart() {
         <div className="flex-shrink-0 px-4 py-24 sm:px-6">
           {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED && (
             <>
-              {/* Shipping Address */}
-              {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
               <div className="rounded-md border border-accent-2 px-6 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accent-4">
                 <div className="mr-5">
                   <MapPin />
                 </div>
                 <div className="text-sm text-center font-medium">
                   <span className="uppercase">+ Add Shipping Address</span>
-                  {/* <span>
-                    1046 Kearny Street.<br/>
-                    San Franssisco, California
-                  </span> */}
                 </div>
               </div>
-              {/* Payment Method */}
-              {/* Only available with customCheckout set to true - Meaning that the provider does offer checkout functionality. */}
               <div className="rounded-md border border-accent-2 px-6 py-6 mb-4 text-center flex items-center justify-center cursor-pointer hover:border-accent-4">
                 <div className="mr-5">
                   <CreditCard />
                 </div>
                 <div className="text-sm text-center font-medium">
                   <span className="uppercase">+ Add Payment Method</span>
-                  {/* <span>VISA #### #### #### 2345</span> */}
                 </div>
               </div>
             </>

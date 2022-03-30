@@ -1,10 +1,6 @@
 import type {
-  GetStaticPathsContext,
-  GetServerSideProps,
   GetServerSidePropsContext,
-  GetStaticPropsContext,
   InferGetServerSidePropsType,
-  InferGetStaticPropsType,
 } from 'next'
 import commerce from '@lib/api/commerce'
 import { Text } from '@components/ui'
@@ -47,7 +43,6 @@ export async function getServerSideProps({
 
   return {
     props: { pages, page, categories },
-    revalidate: 60 * 60, // Every hour
   }
 }
 
