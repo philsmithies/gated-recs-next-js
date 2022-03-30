@@ -1,6 +1,9 @@
 import type {
   GetStaticPathsContext,
+  GetServerSideProps,
+  GetServerSidePropsContext,
   GetStaticPropsContext,
+  InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from 'next'
 import commerce from '@lib/api/commerce'
@@ -11,12 +14,12 @@ import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
 
-export async function getStaticProps({
+export async function getServerSideProps({
   preview,
   params,
   locale,
   locales,
-}: GetStaticPropsContext<{ pages: string[] }>) {
+}: GetServerSidePropsContext<{ pages: string[] }>) {
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
@@ -48,30 +51,9 @@ export async function getStaticProps({
   }
 }
 
-export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const config = { locales }
-  const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
-  const [invalidPaths, log] = missingLocaleInPages()
-  const paths = pages
-    .map((page) => page.url)
-    .filter((url) => {
-      if (!url || !locales) return url
-      // If there are locales, only include the pages that include one of the available locales
-      if (locales.includes(getSlug(url).split('/')[0])) return url
-
-      invalidPaths.push(url)
-    })
-  log()
-
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
-
 export default function Pages({
   page,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
 
   return router.isFallback ? (
